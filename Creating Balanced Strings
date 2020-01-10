@@ -1,1 +1,47 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var balancedStringSplit = function(s) {
+    var count = 0;
+    var string = s.toString();
+    var i = 0;
+    
+    for (var r = string.length; r > 0; r --){
+      if(string[i]==="R"){ 
+        do{
+          console.log(string[i])
+          i++;
+        }
+        while (string[i] === "R");
+        string = string.slice(i*2);
+        i = 0;
+        count +=1;
+      } else if (string[i]=== "L") {
+        do{
+          console.log(string[i])
+          i++;
+        }
+        while (string[i] === "L");
+        string = string.slice(i*2);
+        i = 0;
+        count +=1;
+      }
+    }
+    console.log(count);
+};
 
+balancedStringSplit("LLLLRRRR");
+
+//Each IF checks if the first statement is an R or an L, and then checks each sequential value. It takes that value, doubles it to accomidate for the opposite letter, and then removes it from the string and starts over.
+
+/*
+Input: s = "RLRRLLRLRL"
+Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+
+Input: s = "RLLLLRRRLR"
+Output: 3
+Explanation: s can be split into "RL", "LLLRRR", "LR", each substring contains same number of 'L' and 'R'.
+
+*/
