@@ -1,0 +1,14 @@
+//Faster than 92% of other submissions
+var defangIPaddr = function(address) {
+  var out = "";
+  for (var i =0;i<address.length;i++){
+    if (address[i]!="."){
+      out +=address[i]
+    }else{
+      out += "[.]";
+    }
+  }
+  return(out);
+};
+defangIPaddr("255.100.50.0");
+//returns "255[.]100[.]50[.]0"
