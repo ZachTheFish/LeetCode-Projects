@@ -1,0 +1,104 @@
+//INSANE
+//Leetcode link--> https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+var letterCombinations = function(digits) {
+  var count = digits.toString();
+  var mult = 1;
+  var letters = [];
+  //console.log(count)
+  var two = ["a","b","c"];
+  var three = ["d","e","f"];
+  var four = ["g","h","i"];
+  var five = ["j","k","l"];
+  var six = ["m","n","o"];
+  var seven = ["p","q","r","s"];
+  var eight = ["t","u","v"];
+  var nine = ["w","x","y","z"];
+  
+  //mult code
+  for (var i = 1; i< count.length; i++){
+    if (count[i] === "7" || count[i] === "9"){mult *= 4;}    
+    else {mult *= 3}
+  //  console.log("Mult = "+mult)
+    }
+  if (count[0] === "7" || count[0] === "9"){mult += 1;}
+
+  function firstAdd(a){
+    for(var i=0;i<mult;i++){
+    if (a[i]!=undefined){
+    letters[letters.length]=a[i];
+    }
+  letters.sort();
+    }
+  }
+  var deleteLater=[];
+  
+  function nextAdd(a){
+    for (var t=0;t<mult;t++){
+      for(var i=t;i<letters.length;i+=mult){
+        if (a[t]!=undefined){
+        letters[i]+= a[t];
+        }else if(letters[i]{
+        //letters.splice(i,1);
+        }
+      }
+    }
+
+  }
+  if (count.length != 1){
+  for (var i=0;i<mult;i++){
+    if (count[0] == "2"){firstAdd(two);}
+    else if (count[0] == "3"){firstAdd(three);}
+    else if (count[0] == "4"){firstAdd(four);}
+    else if (count[0] == "5"){firstAdd(five);}
+    else if (count[0] == "6"){firstAdd(six);}
+    else if (count[0] == "7"){firstAdd(seven);}
+    else if (count[0] == "8"){firstAdd(eight);}
+    else if (count[0] == "9"){firstAdd(nine);}
+  }
+
+  for (var i=1;i<count.length;i++){
+    if (count[i] == "2"){nextAdd(two);}
+    else if (count[i] == "3"){nextAdd(three);}
+    else if (count[i] == "4"){nextAdd(four);}
+    else if (count[i] == "5"){nextAdd(five);}
+    else if (count[i] == "6"){nextAdd(six);}
+    else if (count[i] == "7"){nextAdd(seven);}
+    else if (count[i] == "8"){nextAdd(eight);}
+    else if (count[i] == "9"){nextAdd(nine);}
+  }
+  }else{ //one number add
+    if (count[0] == "2"){letters+=two;}
+    else if (count[0] == "3"){letters+=three;}
+    else if (count[0] == "4"){letters+=four;}
+    else if (count[0] == "5"){letters+=five;}
+    else if (count[0] == "6"){letters+=six;}
+    else if (count[0] == "7"){letters+=seven;}
+    else if (count[0] == "8"){letters+=eight;}
+    else if (count[0] == "9"){letters+=nine;}
+  }
+
+ 
+  
+  console.log(letters)
+};//returns 27 values 3 times
+
+letterCombinations(72);
+
+
+/* So Basically
+mult = how many variations of each starting letter
+
+
+
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+
+Input: "27"
+Output ["ap","aq","ar","as","bp","bq","br","bs","cp","cq","cr","cs"]-
+
+272= 12as
+2345= 27as
+
+# of as = aBCDE b*c*d*e
+
+*/
