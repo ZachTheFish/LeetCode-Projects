@@ -1,0 +1,37 @@
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ https://leetcode.com/problems/plus-one/
+ */
+var plusOne = function(digits) {
+  var add = 0;
+  for (var i=0; i<digits.length;i++){  
+  add+=((parseInt(digits[i])*Math.pow(10,digits.length-i,))/10);
+  }
+  add+=1;
+  var add = add.toString()
+  add = Array.from(add)
+
+  return(add)
+};
+
+plusOne([6,1,4,9])
+//Adds 1 to the last digit
+
+//0,5,5,4,3
+
+/*
+  digits[digits.length-1]+=1;
+  return(digits) --> would work when digits != 9
+
+Input: [9,9]
+Output: [1,0,0]
+
+Input: [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+
+Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+*/
